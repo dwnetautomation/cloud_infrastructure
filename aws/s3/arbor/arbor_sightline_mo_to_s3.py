@@ -11,18 +11,6 @@ import boto3
 import json
 import re
 import urllib3
-import logging
-from logging import Formatter
-from logging.handlers import RotatingFileHandler, SysLogHandler
-
-logging.getLogger('get_mo.py python3.6')
-logging.basicConfig(level=logging.INFO,
-        format='[%(asctime)s] - %(name)s - %(levelname)s - %(message)s',
-        datefmt='%Y-%m-%d %H:%M:%S',
-        handlers=[SysLogHandler(address='/dev/log'),
-                  RotatingFileHandler(filename='logs_prod/get_mo.log',
-                                      backupCount=7,
-                                      maxBytes=100 * 1024 ** 2)])
 
 urllib3.disable_warnings()
 passphrase = '<PASSPHRASE>'.encode()
@@ -74,4 +62,3 @@ def get_json_config(url, atk):
 if __name__ == "__main__":
     sl_customers = get_json_config(url, atk)
     response = upload_json_to_s3(sl_customers, s3d)
-    logging.getLogger('get_mo.py python3.6').info('sl_customers.json updated - S3 sl_customers - VID: {0}'.format(response['VersionId']))

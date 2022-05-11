@@ -8,7 +8,7 @@ from Crypto.Hash import MD5
 import base64
 import boto3
 import json
-
+ 
 passphrase = '<PASSPHRASE>'.encode()
 settings_file = open('/settings/settings.yaml', 'r')
 settings = yaml.safe_load(settings_file)
