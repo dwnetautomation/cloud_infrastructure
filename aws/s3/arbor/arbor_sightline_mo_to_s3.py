@@ -1,4 +1,5 @@
 #!/usr/bin/python3.6
+
 import grequests
 import requests
 import yaml
@@ -24,7 +25,7 @@ logging.basicConfig(level=logging.INFO,
                                       maxBytes=100 * 1024 ** 2)])
 
 urllib3.disable_warnings()
-passphrase = 'SANITIZED'.encode()
+passphrase = '<PASSPHRASE>'.encode()
 settings_file = open('/settings/settings.yaml', 'r')
 settings = yaml.safe_load(settings_file)
 BLOCK_SIZE=16
